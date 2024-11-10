@@ -1,0 +1,17 @@
+
+<div class="modal">
+    <div class="modal-content">
+      <h2>Receipt</h2>
+      <div *ngFor="let product of receiptData.selectedProducts">
+        {{ product.name }} - {{ product.quantity }} x {{ product.price}}
+      </div>
+      <div>Total Items: {{ receiptData.selectedProducts.length }}</div>
+      <div>Sub Total: {{ receiptData.subTotal }}</div>
+      <div>VAT Tax: {{ receiptData.vatTax }}</div>
+      <div>Discount: {{ receiptData.discount  }}</div>
+      <div>Total: {{ receiptData.total }}</div>
+
+      <button (click)="onClose()">Close</button>
+    </div>
+  </div>
+  

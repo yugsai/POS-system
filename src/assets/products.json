@@ -1,0 +1,31 @@
+[
+    {
+      "name": "Jackets",
+      "price": "130",
+      "category": "jackets",
+      "description": "fashion, clothes",
+      "image": "/assets/images/jacket.jpg"
+    },
+    {
+      "name": "laptop",
+      "price": "5000",
+      "category": "Electronic",
+      "description": "Laptops are designed to be portable computers,",
+      "image": "assets/images/laptop.jpg"
+    },
+    {
+      "name": "Bat-Ball",
+      "price": "460",
+      "category": "Sports",
+      "description": "Sports equipment, tools, materials, apparel",
+      "image": "assets/images/bat-ball.jpg"
+    },
+    {
+      "name": "Notebook",
+      "price": "190",
+      "category": "Notebook",
+      "description": "note-taking, journaling or other writing, drawing, or scrapbooking.",
+      "image": "assets/images/notebook.jpg"
+    }
+  ]
+  

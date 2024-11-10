@@ -1,0 +1,92 @@
+<div class="container">
+    <div class="product-list-container">
+      <div class="product-list" *ngIf="products.length > 0">
+        <div *ngFor="let product of products" (click)="onSelectProduct(product)">
+          <div class="tooltip">
+            <img src="{{product.image}}" alt="{{ product.name }}" class="product-image">
+            <span class="tooltiptext">{{ product.name }} - Price: {{ product.price }} - {{ product.description }}</span>
+          </div>
+          {{ product.name }}
+        </div>
+      </div>
+  
+      <div class="empty-list" *ngIf="products.length === 0">
+        <p>THERE ARE NO PRODUCTS</p>
+      </div>
+    </div>
+  
+    <div class="product-details">
+      <table class="selected-product-table" *ngIf="selectedProducts.length > 0">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let selectedProduct of selectedProducts">
+            <td>            <div>
+                {{ selectedProduct.name }}
+                <button (click)="onDeleteProduct(selectedProduct)" class="delete-button">❌</button>
+              </div>
+  </td>
+            <td>{{ selectedProduct.price }}</td>
+            <td>
+              <div class="quantity-controls">
+                <button (click)="onDecreaseQuantity(selectedProduct)" class="quantity-button">-</button>
+                <span>{{ selectedProduct.quantity }}</span>
+                <button (click)="onIncreaseQuantity(selectedProduct)" class="quantity-button">+</button>
+              </div>
+            </td>
+            <td>{{ calculateTotal(selectedProduct) }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="footer-section" *ngIf="selectedProducts.length > 0">
+        <div class="totals-section">
+          <div class="total-field">
+            <label>Sub Total:</label>
+            <span>{{ calculateSubTotal() }}</span>
+
+          </div>
+          <div class="total-field">
+            <label>VAT Tax:</label>
+            <span>{{ calculateVatTax()}}</span>
+          </div>
+          <div class="total-field">
+            <label>Discount:</label>
+            <span>{{ discount }}</span>
+          </div>
+          <div class="total-field">
+            <label>Total:</label>
+            <span>{{ calculateTotals()}}</span>
+          </div>
+        </div>
+      
+        <!-- Buttons -->
+        <div class="buttons-section">
+          <button class="cancel-sale-button" (click)="cancelSale()">CANCEL SALE</button>
+          <button class="process-sale-button" (click)="processSale()">PROCESS SALE</button>
+        </div>
+
+        <app-receipt-modal
+        *ngIf="modalService.modalVisible$ | async"
+        [receiptData]="{
+          selectedProducts: selectedProducts,
+          subTotal: calculateSubTotal(),
+          vatTax: calculateVatTax(),
+          discount: discount,
+          total: calculateTotals()
+        }"
+      ></app-receipt-modal>
+  </div>
+  
+  
+  
+  
+  
+  
